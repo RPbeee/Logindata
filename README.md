@@ -9,4 +9,4 @@
 /logindata count [playername]       プレイヤーの累計ログイン回数を取得  
 
 ## ダウンロード
-ここ。
+https://github.com/RPbeee/Logindata/releases/latest
