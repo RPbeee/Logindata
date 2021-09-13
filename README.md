@@ -10,3 +10,6 @@
 
 ## ダウンロード
 https://github.com/RPbeee/Logindata/releases/latest
+
+## その他
+こんなのでライセンスとか必要なのか分かりませんがとりあえずMITライセンスで公開します。
