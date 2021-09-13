@@ -1,0 +1,19 @@
+name: Logindata
+version: '${project.version}'
+main: net.github.rpbeee.logindata.Logindata
+authors: [ RPbeee ]
+description: ログインデータを扱うPL.
+commands:
+  logindata:
+    description: ログインデータについてのコマンド
+    permission: logindata.logindata
+    permission-message: "You don't have a permission!"
+permissions:
+  logindata.*:
+    default: op
+    description: all perm.
+    children:
+      logindata.logindata: true
+  logindata.logindata:
+    default: op
+    description: logindata command perm.
