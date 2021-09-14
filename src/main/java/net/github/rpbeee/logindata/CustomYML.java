@@ -53,14 +53,8 @@ public class CustomYML {
     }
 
     public void saveConfig() {
-        if(config == null) {
-            return;
-        }
-        try {
-            getConfig().save(configFile);
-        } catch (IOException ex) {
-            plugin.getLogger().log(Level.SEVERE, "Could not save config to " + configFile, ex);
-        }
+        SaveScheduler scheduler = new SaveScheduler(config, plugin, configFile);
+        scheduler.runTaskAsynchronously(plugin);
     }
 
     public boolean checkyml() {
