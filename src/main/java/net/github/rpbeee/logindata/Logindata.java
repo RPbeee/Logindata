@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.Date;
 
 public final class Logindata extends JavaPlugin {
@@ -18,6 +19,10 @@ public final class Logindata extends JavaPlugin {
     public void onEnable() {
         getLogger().info("ログインデータPL開始");
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+        File pdir = new File(this.getDataFolder()+"/playerdata/");
+        if (!pdir.exists()) {
+            pdir.mkdir();
+        }
     }
 
     @Override
@@ -54,7 +59,7 @@ public final class Logindata extends JavaPlugin {
             return true;
         }
 
-        CustomYML cyml = new CustomYML(this, player.getUniqueId()+".yml");
+        CustomYML cyml = new CustomYML(this, this.getDataFolder()+"/playerdata/"+player.getUniqueId()+".yml");
         FileConfiguration lyml = cyml.getConfig();
 
         if(args[0].equalsIgnoreCase("firstjoin")) {
