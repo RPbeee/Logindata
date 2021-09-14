@@ -50,11 +50,7 @@ public final class Logindata extends JavaPlugin {
         }
 
         Player player = Bukkit.getServer().getPlayer(args[1]);
-        if (player==null) {
-            sender.sendMessage(premsg+"プレイヤー名が間違っています");
-            return true;
-        }
-        if (!args[1].equals(player.getName()) || !player.hasPlayedBefore()) {
+        if (player==null || !args[1].equals(player.getName()) || !player.hasPlayedBefore()) {
             sender.sendMessage(premsg+"プレイヤー名が間違っています");
             return true;
         }
