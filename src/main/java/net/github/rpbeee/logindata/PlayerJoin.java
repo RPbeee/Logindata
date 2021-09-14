@@ -16,8 +16,8 @@ public class PlayerJoin implements Listener {
         cyml.saveDefaultConfig();
         cyml.reloadConfig();
         FileConfiguration lyml = cyml.getConfig();
-        int count = lyml.getInt(player.getName()+".count");
-        lyml.set(player.getName()+".count", count+1);
+        int count = lyml.getInt(player.getUniqueId()+".count");
+        lyml.set(player.getUniqueId()+".count", count+1);
         cyml.saveConfig();
         player.getServer().getLogger().info(player.getName()+" のログインを確認しました");
     }

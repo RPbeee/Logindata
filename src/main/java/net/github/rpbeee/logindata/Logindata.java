@@ -66,7 +66,7 @@ public final class Logindata extends JavaPlugin {
             Date date = new Date(player.getLastPlayed());
             sender.sendMessage(premsg+args[1]+" の最終ログイン日時は: "+date.toLocaleString()+" です");
         } else if(args[0].equalsIgnoreCase("count")) {
-            int count = lyml.getInt(args[1]+".count");
+            int count = lyml.getInt(player.getUniqueId()+".count");
             sender.sendMessage(premsg+args[1]+" の累計ログイン回数は: "+count+" 回です");
         } else {
             argserror(sender, false);
