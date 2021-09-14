@@ -54,9 +54,7 @@ public final class Logindata extends JavaPlugin {
             return true;
         }
 
-        CustomYML cyml = new CustomYML(this, "count.yml");
-        cyml.saveDefaultConfig();
-        cyml.reloadConfig();
+        CustomYML cyml = new CustomYML(this, player.getUniqueId()+".yml");
         FileConfiguration lyml = cyml.getConfig();
 
         if(args[0].equalsIgnoreCase("firstjoin")) {
@@ -66,12 +64,11 @@ public final class Logindata extends JavaPlugin {
             Date date = new Date(player.getLastPlayed());
             sender.sendMessage(premsg+args[1]+" の最終ログイン日時は: "+date.toLocaleString()+" です");
         } else if(args[0].equalsIgnoreCase("count")) {
-            int count = lyml.getInt(player.getUniqueId()+".count");
+            int count = lyml.getInt("count");
             sender.sendMessage(premsg+args[1]+" の累計ログイン回数は: "+count+" 回です");
         } else {
             argserror(sender, false);
         }
-        cyml.saveConfig();
         return true;
     }
 }

@@ -12,12 +12,11 @@ public class PlayerJoin implements Listener {
     public void pjoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         Plugin plugin = player.getServer().getPluginManager().getPlugin("Logindata");
-        CustomYML cyml = new CustomYML(plugin, "count.yml");
-        cyml.saveDefaultConfig();
-        cyml.reloadConfig();
+        CustomYML cyml = new CustomYML(plugin, player.getUniqueId()+".yml");
+        cyml.getConfig();
         FileConfiguration lyml = cyml.getConfig();
-        int count = lyml.getInt(player.getUniqueId()+".count");
-        lyml.set(player.getUniqueId()+".count", count+1);
+        int count = lyml.getInt("count");
+        lyml.set("count", count+1);
         cyml.saveConfig();
         player.getServer().getLogger().info(player.getName()+" のログインを確認しました");
     }
