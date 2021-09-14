@@ -21,6 +21,7 @@ public final class Logindata extends JavaPlugin {
         if (!pdir.exists()) {
             pdir.mkdir();
         }
+        Bukkit.getPluginCommand("logindata").setExecutor(new CmdExecuter());
     }
 
     @Override
