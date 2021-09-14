@@ -12,8 +12,6 @@ import java.io.File;
 import java.util.Date;
 
 public final class Logindata extends JavaPlugin {
-    // プレイヤー宛メッセージのプレフィックス
-    String premsg = ChatColor.GREEN+"[Logindata] "+ChatColor.WHITE;
 
     @Override
     public void onEnable() {
@@ -28,48 +26,5 @@ public final class Logindata extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("ログインデータPL終了");
-    }
-
-    public void argserror(CommandSender sender, boolean ecode) {
-        if(ecode){
-            sender.sendMessage(premsg+"引数が多いか足りません！");
-        } else {
-            sender.sendMessage(premsg+"引数が間違っています！");
-        }
-        sender.sendMessage(premsg+"/logindata firstjoin [プレイヤー名]");
-        sender.sendMessage(premsg+"/logindata lastjoin [プレイヤー名]");
-        sender.sendMessage(premsg+"/logindata count [プレイヤー名]");
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
-        if (args.length != 2) {
-            // too less or much args.
-            argserror(sender, true);
-            return true;
-        }
-
-        Player player = Bukkit.getServer().getPlayerExact(args[1]);
-        if (player==null) {
-            sender.sendMessage(premsg+"プレイヤー名が間違っています");
-            return true;
-        }
-
-        CustomYML cyml = new CustomYML(this, "/playerdata/"+player.getUniqueId()+".yml");
-        FileConfiguration lyml = cyml.getConfig();
-
-        if(args[0].equalsIgnoreCase("firstjoin")) {
-            Date date = new Date(player.getFirstPlayed());
-            sender.sendMessage(premsg+args[1]+" の初ログイン日時は: "+date.toLocaleString()+" です");
-        } else if(args[0].equalsIgnoreCase("lastjoin")) {
-            Date date = new Date(player.getLastPlayed());
-            sender.sendMessage(premsg+args[1]+" の最終ログイン日時は: "+date.toLocaleString()+" です");
-        } else if(args[0].equalsIgnoreCase("count")) {
-            int count = lyml.getInt("count");
-            sender.sendMessage(premsg+args[1]+" の累計ログイン回数は: "+count+" 回です");
-        } else {
-            argserror(sender, false);
-        }
-        return true;
     }
 }
