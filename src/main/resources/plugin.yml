@@ -1,5 +1,5 @@
 name: Logindata
-version: '${project.version}'
+version: v.1.0.1
 main: net.github.rpbeee.logindata.Logindata
 authors: [ RPbeee ]
 description: ログインデータを扱うPL.
